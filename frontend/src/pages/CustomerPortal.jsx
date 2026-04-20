@@ -77,87 +77,128 @@ export default function CustomerPortal() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
+      {/* Background Orbs */}
+      <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0,0,0,0) 70%)', pointerEvents: 'none', zIndex: 0 }}></div>
+      <div style={{ position: 'absolute', bottom: '10%', right: '-5%', width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(0,0,0,0) 70%)', pointerEvents: 'none', zIndex: 0 }}></div>
+
       {/* Header */}
-      <header style={{ padding: '2rem 4rem', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 10 }}>
-        <h1 style={{ color: 'var(--color-primary)', fontSize: '2rem', display: 'flex', alignItems: 'center', gap: '1rem', margin: 0 }}>
-          <Plane size={32} />
-          AeroTravel.
+      <header className="animate-fade-in" style={{ padding: '1.5rem 4rem', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 10, backdropFilter: 'blur(20px)' }}>
+        <h1 style={{ color: '#FFFFFF', fontSize: '1.75rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.75rem', margin: 0, letterSpacing: '-0.03em' }}>
+          <div style={{ backgroundColor: 'var(--color-primary)', padding: '0.6rem', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.3)' }}>
+            <Plane size={24} color="#FFF" />
+          </div>
+          Aero<span style={{ color: 'var(--color-primary)' }}>Travel</span>
         </h1>
-        <div style={{ color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 500 }}>
-          <Clock size={16} />
-          Live Departures & Arrivals
+        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+          <div style={{ color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 500, fontSize: '0.9rem', backgroundColor: 'rgba(255,255,255,0.03)', padding: '0.5rem 1.25rem', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--color-success)', boxShadow: '0 0 10px var(--color-success)' }} />
+            Live Network Status
+          </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main style={{ flex: 1, padding: '0 4rem 4rem 4rem', display: 'flex', flexDirection: 'column', gap: '3rem', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+      <main style={{ flex: 1, padding: '0 4rem 4rem 4rem', display: 'flex', flexDirection: 'column', gap: '4rem', maxWidth: '1300px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 2 }}>
         
         {/* Hero Section */}
-        <section style={{ textAlign: 'center', padding: '6rem 2rem 4rem 2rem', position: 'relative' }}>
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 70%)', pointerEvents: 'none', zIndex: 0 }}></div>
-          <h2 style={{ position: 'relative', zIndex: 1, fontSize: '4.5rem', fontWeight: 800, letterSpacing: '-0.05em', marginBottom: '1rem', background: 'linear-gradient(to right, #FFFFFF, var(--color-primary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            Elevate Your Journey.
-          </h2>
-          <p style={{ position: 'relative', zIndex: 1, fontSize: '1.25rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto 3rem auto', lineHeight: 1.6 }}>
-            Experience the future of flight scheduling. Real-time updates, intelligent routing, and seamless bookings—all in one place.
-          </p>
-          
-          <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap' }}>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-text-main)' }}>24/7</div>
-              <div style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Global Tracking</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-text-main)' }}>100%</div>
-              <div style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Uptime Reliability</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-text-main)' }}>&lt;1ms</div>
-              <div style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Route Calculation</div>
+        <section style={{ textAlign: 'center', padding: '7rem 2rem 5rem 2rem' }}>
+          <div className="animate-fade-in-up">
+            <span style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)', color: 'var(--color-primary)', padding: '0.6rem 1.2rem', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', border: '1px solid rgba(59, 130, 246, 0.2)', marginBottom: '2rem', display: 'inline-block' }}>
+              The Future of Air Travel
+            </span>
+            <h2 style={{ fontSize: '5rem', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.04em', marginBottom: '1.5rem', background: 'linear-gradient(to bottom, #FFFFFF 40%, rgba(255,255,255,0.6))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Redefining the <br /> modern journey.
+            </h2>
+            <p style={{ fontSize: '1.25rem', color: 'var(--color-text-muted)', maxWidth: '650px', margin: '0 auto 3.5rem auto', lineHeight: 1.6, fontWeight: 400 }}>
+              Experience elite-level flight scheduling and management. Real-time insights, intelligent routing, and premium bookings at your fingertips.
+            </p>
+            
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '5rem', flexWrap: 'wrap' }}>
+              <div className="animate-fade-in delay-100">
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#FFF', marginBottom: '0.25rem' }}>24/7</div>
+                <div style={{ color: 'var(--color-text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 600 }}>Active Nodes</div>
+              </div>
+              <div className="animate-fade-in delay-200">
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#FFF', marginBottom: '0.25rem' }}>100%</div>
+                <div style={{ color: 'var(--color-text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 600 }}>Uptime SLA</div>
+              </div>
+              <div className="animate-fade-in delay-300">
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#FFF', marginBottom: '0.25rem' }}>Dijkstra</div>
+                <div style={{ color: 'var(--color-text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 600 }}>Routing Engine</div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Route Planner */}
-        <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', position: 'relative', zIndex: 2 }}>
+        {/* Global Explorer */}
+        <section className="animate-fade-in-up delay-200" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '2.5rem' }}>
           <div className="premium-card">
-            <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-primary)' }}>Trip Planner</h2>
-            <form onSubmit={handleRouteSearch} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-              <div style={{ flex: 1, minWidth: '150px' }}>
-                <label className="premium-label">From</label>
-                <input type="text" className="premium-input" value={source} onChange={e => setSource(e.target.value)} placeholder="JFK" required />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
+                <Plane size={20} />
               </div>
-              <div style={{ flex: 1, minWidth: '150px' }}>
-                <label className="premium-label">To</label>
-                <input type="text" className="premium-input" value={dest} onChange={e => setDest(e.target.value)} placeholder="LAX" required />
+              <h3 style={{ margin: 0, fontSize: '1.25rem' }}>Intelligent Planner</h3>
+            </div>
+            <form onSubmit={handleRouteSearch} style={{ display: 'grid', gap: '1.5rem' }}>
+              <div>
+                <label className="premium-label">Origin Airport</label>
+                <input type="text" className="premium-input" value={source} onChange={e => setSource(e.target.value)} placeholder="e.g. JFK" required />
               </div>
-              <button type="submit" className="premium-btn" style={{ height: '48px', width: '100%' }}>Search Route</button>
+              <div>
+                <label className="premium-label">Destination</label>
+                <input type="text" className="premium-input" value={dest} onChange={e => setDest(e.target.value)} placeholder="e.g. LAX" required />
+              </div>
+              <button type="submit" className="premium-btn" style={{ marginTop: '0.5rem' }}>Calculate Optimized Path</button>
             </form>
           </div>
 
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
             {error && (
-              <div style={{ padding: '1.5rem', backgroundColor: 'rgba(239, 68, 68, 0.1)', color: 'var(--color-danger)', borderRadius: '8px', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
-                {error}
+              <div className="animate-fade-in" style={{ padding: '1.5rem', backgroundColor: 'rgba(239, 68, 68, 0.1)', color: 'var(--color-danger)', borderRadius: '20px', border: '1px solid rgba(239, 68, 68, 0.2)', backdropFilter: 'blur(10px)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'var(--color-danger)', color: '#FFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>!</div>
+                  {error}
+                </div>
+              </div>
+            )}
+
+            {!routeData && !error && (
+              <div className="premium-card" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: 'rgba(255,255,255,0.01)' }}>
+                <div>
+                  <div className="animate-float" style={{ fontSize: '3rem', marginBottom: '1.5rem', opacity: 0.5 }}>🌍</div>
+                  <p style={{ color: 'var(--color-text-muted)', fontSize: '1.1rem' }}>Enter origins to visualize the global network.</p>
+                </div>
               </div>
             )}
 
             {routeData && (
-              <div className="premium-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ color: 'var(--color-primary)', marginBottom: '1.5rem' }}>Fastest Route Discovered</h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+              <div className="premium-card animate-fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem' }}>
+                  <div>
+                    <h3 style={{ color: 'var(--color-primary)', marginBottom: '0.5rem' }}>Optimal Route Optimized</h3>
+                    <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Computed via Dijkstra's Shortest Path Algorithm</p>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#FFF' }}>{routeData.totalWeight} min</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Travel Duration</div>
+                  </div>
+                </div>
+                
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '2.5rem', padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '16px' }}>
                   {routeData.path.map((node, index) => (
                     <div key={node} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                      <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>{node}</span>
-                      {index < routeData.path.length - 1 && <ArrowRight color="var(--color-primary)" size={16} />}
+                      <span style={{ fontSize: '1.5rem', fontWeight: '800', color: '#FFF' }}>{node}</span>
+                      {index < routeData.path.length - 1 && (
+                        <div style={{ color: 'var(--color-primary)', display: 'flex', alignItems: 'center' }}>
+                          <ArrowRight size={20} strokeWidth={3} />
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
-                <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem' }}>
-                  Estimated Travel Time: <span style={{ color: 'var(--color-text-main)', fontWeight: '600', fontSize: '1.1rem' }}>{routeData.totalWeight} minutes</span>
-                </p>
-                <div style={{ flex: 1, minHeight: '300px' }}>
+
+                <div style={{ flex: 1, minHeight: '350px', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
                   <RouteMap routePath={routeData.path} />
                 </div>
               </div>
@@ -165,63 +206,79 @@ export default function CustomerPortal() {
           </div>
         </section>
 
-        {/* Departures Board */}
-        <section style={{ position: 'relative', zIndex: 2 }}>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-primary)' }}>
-            Flight Status Board
-          </h2>
+        {/* Global Schedule Board */}
+        <section className="animate-fade-in-up delay-300">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-success)' }}>
+                <Clock size={20} />
+              </div>
+              <h2 style={{ margin: 0, fontSize: '1.5rem' }}>Global Flight Board</h2>
+            </div>
+          </div>
+
           <div className="premium-card" style={{ padding: 0, overflow: 'hidden' }}>
             {isLoadingFlights ? (
-              <div style={{ padding: '2.5rem' }}>
-                <div className="skeleton skeleton-text" style={{ width: '100%', height: '3rem', marginBottom: '1rem' }}></div>
-                <div className="skeleton skeleton-text" style={{ width: '100%', height: '3rem', marginBottom: '1rem' }}></div>
-                <div className="skeleton skeleton-text" style={{ width: '100%', height: '3rem' }}></div>
+              <div style={{ padding: '3rem' }}>
+                <div className="skeleton" style={{ width: '100%', height: '4rem', marginBottom: '1.5rem', borderRadius: '16px' }}></div>
+                <div className="skeleton" style={{ width: '100%', height: '4rem', marginBottom: '1.5rem', borderRadius: '16px' }}></div>
+                <div className="skeleton" style={{ width: '100%', height: '4rem', borderRadius: '16px' }}></div>
               </div>
             ) : flights.length === 0 ? (
-              <p style={{ color: 'var(--color-text-muted)', textAlign: 'center', padding: '3rem' }}>No active flights scheduled at the moment.</p>
+              <div style={{ padding: '5rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem', opacity: 0.3 }}>📭</div>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '1.1rem' }}>No active flights detected in the system.</p>
+              </div>
             ) : (
               <div className="table-responsive">
-                <table className="premium-table" style={{ width: '100%', margin: 0, minWidth: '700px' }}>
-                  <thead style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)' }}>
-                  <tr>
-                    <th style={{ padding: '1.5rem' }}>Flight</th>
-                    <th style={{ padding: '1.5rem' }}>Route</th>
-                    <th style={{ padding: '1.5rem' }}>Time</th>
-                    <th style={{ padding: '1.5rem' }}>Status</th>
-                    <th style={{ padding: '1.5rem' }}>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {flights.map(flight => (
-                    <tr key={flight.flightId}>
-                      <td style={{ fontWeight: '600', color: 'var(--color-primary)', fontSize: '1.2rem', padding: '1.5rem' }}>{flight.flightId}</td>
-                      <td style={{ fontSize: '1.1rem', padding: '1.5rem' }}>{flight.source} &rarr; {flight.destination}</td>
-                      <td style={{ padding: '1.5rem' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-                          <span>{new Date(flight.departureTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
-                        </div>
-                      </td>
-                      <td style={{ padding: '1.5rem' }}>
-                        {flight.status === 'DELAYED' ? (
-                          <span style={{ color: 'var(--color-danger)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--color-danger)', boxShadow: '0 0 8px var(--color-danger)' }} />
-                            DELAYED
-                          </span>
-                        ) : (
-                          <span style={{ color: 'var(--color-success)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--color-success)', boxShadow: '0 0 8px var(--color-success)' }} />
-                            ON TIME
-                          </span>
-                        )}
-                      </td>
-                      <td style={{ padding: '1.5rem' }}>
-                        <button className="premium-btn-outline" onClick={() => handleBookClick(flight.flightId)} style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem' }}>
-                          Book Seat
-                        </button>
-                      </td>
+                <table className="premium-table" style={{ width: '100%', margin: 0, minWidth: '800px' }}>
+                  <thead style={{ backgroundColor: 'rgba(255, 255, 255, 0.02)' }}>
+                    <tr>
+                      <th style={{ padding: '1.5rem 2rem' }}>FLIGHT IDENTITY</th>
+                      <th style={{ padding: '1.5rem 2rem' }}>NETWORK ROUTE</th>
+                      <th style={{ padding: '1.5rem 2rem' }}>DEPARTURE</th>
+                      <th style={{ padding: '1.5rem 2rem' }}>STATUS</th>
+                      <th style={{ padding: '1.5rem 2rem', textAlign: 'right' }}>AVAILABILITY</th>
                     </tr>
-                  ))}
-                </tbody>
+                  </thead>
+                  <tbody>
+                    {flights.map(flight => (
+                      <tr key={flight.flightId} style={{ transition: 'all 0.3s ease' }}>
+                        <td style={{ padding: '1.75rem 2rem' }}>
+                          <span style={{ fontWeight: 800, color: 'var(--color-primary)', fontSize: '1.25rem', letterSpacing: '-0.02em' }}>{flight.flightId}</span>
+                        </td>
+                        <td style={{ padding: '1.75rem 2rem' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.1rem', fontWeight: 500 }}>
+                            {flight.source} <ArrowRight size={14} color="var(--color-text-muted)" /> {flight.destination}
+                          </div>
+                        </td>
+                        <td style={{ padding: '1.75rem 2rem' }}>
+                          <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ fontSize: '1.1rem', fontWeight: 600 }}>{new Date(flight.departureTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Scheduled</span>
+                          </div>
+                        </td>
+                        <td style={{ padding: '1.75rem 2rem' }}>
+                          {flight.status === 'DELAYED' ? (
+                            <span style={{ color: 'var(--color-danger)', fontWeight: 700, fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.4rem 1rem', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '100px', width: 'fit-content' }}>
+                              <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-danger)', boxShadow: '0 0 8px var(--color-danger)' }} />
+                              DELAYED
+                            </span>
+                          ) : (
+                            <span style={{ color: 'var(--color-success)', fontWeight: 700, fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.4rem 1rem', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '100px', width: 'fit-content' }}>
+                              <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-success)', boxShadow: '0 0 8px var(--color-success)' }} />
+                              ON TIME
+                            </span>
+                          )}
+                        </td>
+                        <td style={{ padding: '1.75rem 2rem', textAlign: 'right' }}>
+                          <button className="premium-btn" onClick={() => handleBookClick(flight.flightId)} style={{ padding: '0.6rem 1.5rem', fontSize: '0.85rem' }}>
+                            Secure Seat
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
               </div>
             )}
@@ -231,42 +288,56 @@ export default function CustomerPortal() {
       </main>
 
       {/* Footer */}
-      <footer style={{ padding: '2rem', textAlign: 'center', borderTop: '1px solid rgba(255, 255, 255, 0.05)', color: 'var(--color-text-muted)', fontSize: '0.85rem' }}>
-        <p>&copy; 2024 AeroTravel Scheduling System.</p>
-        <Link to="/admin" style={{ color: 'var(--color-primary)', textDecoration: 'none', marginTop: '1rem', display: 'inline-block', opacity: 0.7, transition: 'opacity 0.2s' }} onMouseEnter={e => e.target.style.opacity=1} onMouseLeave={e => e.target.style.opacity=0.7}>Staff Login</Link>
+      <footer style={{ padding: '4rem', textAlign: 'center', borderTop: '1px solid rgba(255, 255, 255, 0.05)', color: 'var(--color-text-muted)', fontSize: '0.9rem', position: 'relative', zIndex: 10, backdropFilter: 'blur(20px)' }}>
+        <p style={{ marginBottom: '1rem' }}>&copy; 2026 AeroTravel Systems. All rights reserved.</p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+          <Link to="/admin" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 600, opacity: 0.8, transition: 'all 0.3s ease' }} onMouseEnter={e => e.target.style.opacity=1} onMouseLeave={e => e.target.style.opacity=0.8}>Console Login</Link>
+          <a href="#" style={{ color: 'var(--color-text-muted)' }}>Network Topology</a>
+          <a href="#" style={{ color: 'var(--color-text-muted)' }}>Documentation</a>
+        </div>
       </footer>
 
       {/* Booking Modal */}
       {showModal && (
         <div className="modal-overlay" onClick={() => !bookingSuccess && setShowModal(false)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h3 style={{ color: 'var(--color-primary)', marginBottom: '1.5rem' }}>Book Flight {selectedFlight}</h3>
+          <div className="modal-content" style={{ maxWidth: '500px', padding: '3rem', borderRadius: '32px' }} onClick={e => e.stopPropagation()}>
+            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+              <div style={{ width: '60px', height: '60px', borderRadius: '20px', background: 'rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', margin: '0 auto 1.5rem auto' }}>
+                <Plane size={30} />
+              </div>
+              <h3 style={{ color: '#FFF', fontSize: '1.75rem', marginBottom: '0.5rem' }}>Confirm Reservation</h3>
+              <p style={{ color: 'var(--color-text-muted)' }}>Flight Identity: <span style={{ color: 'var(--color-primary)', fontWeight: 700 }}>{selectedFlight}</span></p>
+            </div>
+
             {bookingSuccess ? (
-              <div style={{ padding: '1rem', backgroundColor: 'rgba(16, 185, 129, 0.2)', color: 'var(--color-success)', borderRadius: '8px', border: '1px solid rgba(16, 185, 129, 0.5)' }}>
-                {bookingSuccess}
+              <div className="animate-fade-in" style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderRadius: '24px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
+                <h4 style={{ color: 'var(--color-success)', fontSize: '1.25rem', marginBottom: '0.5rem' }}>Reservation Confirmed</h4>
+                <p style={{ color: '#FFF', fontWeight: 600 }}>{bookingSuccess}</p>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '0.85rem', marginTop: '1rem' }}>Closing in 3 seconds...</p>
               </div>
             ) : (
-              <form onSubmit={handleBookingSubmit} style={{ display: 'grid', gap: '1.5rem' }}>
+              <form onSubmit={handleBookingSubmit} style={{ display: 'grid', gap: '2rem' }}>
                 <div>
-                  <label className="premium-label">Full Name</label>
-                  <input type="text" className="premium-input" value={bookingForm.name} onChange={e => setBookingForm({...bookingForm, name: e.target.value})} required />
+                  <label className="premium-label">Passenger Name</label>
+                  <input type="text" className="premium-input" value={bookingForm.name} onChange={e => setBookingForm({...bookingForm, name: e.target.value})} placeholder="Enter full legal name" required />
                 </div>
                 <div>
-                  <label className="premium-label">Email Address</label>
-                  <input type="email" className="premium-input" value={bookingForm.email} onChange={e => setBookingForm({...bookingForm, email: e.target.value})} required />
+                  <label className="premium-label">Email Context</label>
+                  <input type="email" className="premium-input" value={bookingForm.email} onChange={e => setBookingForm({...bookingForm, email: e.target.value})} placeholder="Enter contact email" required />
                 </div>
                 <div>
-                  <label className="premium-label">Seat Class</label>
-                  <select className="premium-input" value={bookingForm.seatType} onChange={e => setBookingForm({...bookingForm, seatType: e.target.value})} style={{ appearance: 'none', backgroundColor: '#000', color: 'var(--color-text-main)' }}>
-                    <option value="Economy">Economy Class</option>
-                    <option value="Business">Business Class</option>
-                    <option value="First Class">First Class</option>
+                  <label className="premium-label">Cabin Configuration</label>
+                  <select className="premium-input" value={bookingForm.seatType} onChange={e => setBookingForm({...bookingForm, seatType: e.target.value})} style={{ appearance: 'none', backgroundColor: 'rgba(255,255,255,0.03)', color: '#FFF' }}>
+                    <option value="Economy">Economy Executive</option>
+                    <option value="Business">Business Elite</option>
+                    <option value="First Class">Royal First</option>
                   </select>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                  <button type="button" className="premium-btn-outline" onClick={() => setShowModal(false)} style={{ flex: 1 }}>Cancel</button>
-                  <button type="submit" className="premium-btn" style={{ flex: 1, opacity: isBooking ? 0.7 : 1, cursor: isBooking ? 'not-allowed' : 'pointer' }} disabled={isBooking}>
-                    {isBooking ? 'Booking...' : 'Confirm Booking'}
+                  <button type="button" className="premium-btn-outline" onClick={() => setShowModal(false)} style={{ flex: 1, borderRadius: '16px' }}>Discard</button>
+                  <button type="submit" className="premium-btn" style={{ flex: 1.5, borderRadius: '16px', opacity: isBooking ? 0.7 : 1, cursor: isBooking ? 'not-allowed' : 'pointer' }} disabled={isBooking}>
+                    {isBooking ? 'Processing...' : 'Complete Reservation'}
                   </button>
                 </div>
               </form>
@@ -276,4 +347,5 @@ export default function CustomerPortal() {
       )}
     </div>
   );
+
 }
