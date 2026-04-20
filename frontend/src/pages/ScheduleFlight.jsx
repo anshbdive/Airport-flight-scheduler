@@ -59,11 +59,11 @@ export default function ScheduleFlight() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
             <div>
               <label className="premium-label">Source Airport</label>
-              <input type="text" name="source" value={formData.source} onChange={handleChange} className="premium-input" placeholder="e.g. JFK" required />
+              <input type="text" name="source" value={formData.source} onChange={handleChange} className="premium-input" placeholder="e.g. DEL" required />
             </div>
             <div>
               <label className="premium-label">Destination Airport</label>
-              <input type="text" name="destination" value={formData.destination} onChange={handleChange} className="premium-input" placeholder="e.g. LAX" required />
+              <input type="text" name="destination" value={formData.destination} onChange={handleChange} className="premium-input" placeholder="e.g. BOM" required />
             </div>
           </div>
 

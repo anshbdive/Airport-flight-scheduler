@@ -42,11 +42,11 @@ export default function FindRoute() {
         <form onSubmit={handleSearch} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end' }}>
           <div style={{ flex: 1 }}>
             <label className="premium-label">Source Airport</label>
-            <input type="text" className="premium-input" value={source} onChange={e => setSource(e.target.value)} placeholder="e.g. JFK" required />
+            <input type="text" className="premium-input" value={source} onChange={e => setSource(e.target.value)} placeholder="e.g. DEL" required />
           </div>
           <div style={{ flex: 1 }}>
             <label className="premium-label">Destination Airport</label>
-            <input type="text" className="premium-input" value={dest} onChange={e => setDest(e.target.value)} placeholder="e.g. SFO" required />
+            <input type="text" className="premium-input" value={dest} onChange={e => setDest(e.target.value)} placeholder="e.g. BOM" required />
           </div>
           <button type="submit" className="premium-btn" style={{ height: '48px' }}>Find Route</button>
         </form>

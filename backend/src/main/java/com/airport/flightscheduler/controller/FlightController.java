@@ -18,6 +18,9 @@ public class FlightController {
     @Autowired
     private FlightService flightService;
 
+    @Autowired
+    private com.airport.flightscheduler.service.NotificationService notificationService;
+
     @PostMapping("/flights")
     public ResponseEntity<Flight> scheduleFlight(@RequestBody Flight flight) {
         Flight scheduledFlight = flightService.scheduleFlight(flight);
@@ -70,5 +73,31 @@ public class FlightController {
     @GetMapping("/bookings")
     public ResponseEntity<List<Passenger>> getAllBookings() {
         return ResponseEntity.ok(flightService.getAllBookings());
+    }
+
+    @GetMapping("/bookings/export")
+    public ResponseEntity<String> exportManifest() {
+        List<Passenger> bookings = flightService.getAllBookings();
+        StringBuilder csv = new StringBuilder();
+        csv.append("Booking ID,Passenger Name,Flight ID,Email,Seat Type,Booking Time\n");
+        for (Passenger p : bookings) {
+            csv.append(String.format("%s,%s,%s,%s,%s,%s\n",
+                    p.getBookingId(), p.getName(), p.getFlightId(), p.getEmail(), p.getSeatType(), p.getBookingTime()));
+        }
+        return ResponseEntity.ok()
+                .header("Content-Disposition", "attachment; filename=manifest.csv")
+                .header("Content-Type", "text/csv")
+                .body(csv.toString());
+    }
+
+    @GetMapping("/notifications")
+    public ResponseEntity<List<com.airport.flightscheduler.model.Notification>> getNotifications() {
+        return ResponseEntity.ok(notificationService.getRecentNotifications());
+    }
+
+    @DeleteMapping("/notifications")
+    public ResponseEntity<Void> clearNotifications() {
+        notificationService.clearAll();
+        return ResponseEntity.ok().build();
     }
 }

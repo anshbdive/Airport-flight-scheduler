@@ -64,6 +64,10 @@ export default function AdminBookings() {
     XLSX.writeFile(workbook, "passenger-manifest.xlsx");
   };
 
+  const exportCSV = () => {
+    window.location.href = `${API_URL}/bookings/export`;
+  };
+
   return (
     <div>
       <div className="page-header">
@@ -74,6 +78,9 @@ export default function AdminBookings() {
           </button>
           <button className="premium-btn" onClick={exportExcel} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Download size={18} /> Excel
+          </button>
+          <button className="premium-btn" onClick={exportCSV} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#10b981' }}>
+            <FileText size={18} /> CSV (Direct)
           </button>
         </div>
       </div>

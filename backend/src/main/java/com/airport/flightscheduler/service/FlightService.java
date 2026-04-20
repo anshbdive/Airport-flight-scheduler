@@ -3,6 +3,7 @@ package com.airport.flightscheduler.service;
 import com.airport.flightscheduler.model.Flight;
 import com.airport.flightscheduler.model.Passenger;
 import com.airport.flightscheduler.model.Route;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,8 +28,12 @@ public class FlightService {
     // 5. List for Passenger Bookings
     private final List<Passenger> bookings = new ArrayList<>();
 
+    @Autowired
+    private NotificationService notificationService;
+
     public FlightService() {
         // Initialize graph with some default routes (times in minutes)
+        // US Routes
         addRoute("JFK", "LAX", 360);
         addRoute("JFK", "ORD", 150);
         addRoute("ORD", "LAX", 240);
@@ -37,6 +42,24 @@ public class FlightService {
         addRoute("DFW", "LAX", 190);
         addRoute("JFK", "MIA", 180);
         addRoute("MIA", "DFW", 170);
+
+        // Indian Routes
+        addRoute("DEL", "BOM", 130);
+        addRoute("DEL", "BLR", 160);
+        addRoute("DEL", "CCU", 130);
+        addRoute("DEL", "HYD", 140);
+        addRoute("DEL", "AMD", 90);
+        addRoute("BOM", "BLR", 100);
+        addRoute("BOM", "HYD", 85);
+        addRoute("BOM", "AMD", 70);
+        addRoute("BOM", "PNQ", 45);
+        addRoute("BOM", "GOI", 75);
+        addRoute("BLR", "HYD", 70);
+        addRoute("BLR", "MAA", 60);
+        addRoute("BLR", "COK", 65);
+        addRoute("MAA", "CCU", 140);
+        addRoute("MAA", "HYD", 75);
+        addRoute("CCU", "HYD", 125);
     }
 
     private void addRoute(String source, String dest, int weight) {
@@ -80,6 +103,7 @@ public class FlightService {
             if (!delayedFlights.contains(flight)) {
                 delayedFlights.offer(flight);
             }
+            notificationService.addNotification(flightId, "Flight " + flightId + " delayed due to priority adjustment.", "WARNING");
         }
         return flight;
     }
@@ -101,6 +125,11 @@ public class FlightService {
                 if (!delayedFlights.contains(flight)) {
                     delayedFlights.offer(flight);
                 }
+                notificationService.addNotification(flightId, "Flight " + flightId + " is now DELAYED.", "WARNING");
+            } else if ("CANCELLED".equals(status)) {
+                notificationService.addNotification(flightId, "Flight " + flightId + " has been CANCELLED.", "URGENT");
+            } else if ("ON_TIME".equals(status)) {
+                notificationService.addNotification(flightId, "Flight " + flightId + " is back ON TIME.", "INFO");
             }
         }
         return flight;
